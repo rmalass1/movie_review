@@ -1,11 +1,12 @@
 import joblib
+import streamlit as st
 
 #Load the best model and the vectorizer
 model = joblib.load('best_nb_model.pkl')
 vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
 #Input new review for prediction
-review = input("Enter a movie review: ")
+review = st.text_input("Enter a movie review: ")
 
 #Transform the review into numerical values
 X_new = vectorizer.transform([review])
