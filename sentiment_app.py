@@ -134,7 +134,7 @@ if st.button ("🎬 Predict Sentiment", use_container_width=True):
                     f"""
                     <div style='background: linear-gradient(135deg, #3a0ca3, #7209b7); padding: 20px; border-radius: 15px; margin-top: 20px; margin-bottom: 20px;'>
                         <h3 style='text-align: center; color: #ffffff;'>Translated from {lang_display}</h3>
-                        <p style='text-align: center; font-size: 18px; color: #eeeeee; margin-top: 10px;'>{translation}</p>
+                        <p style='text-align: center; font-weight: bold; font-size: 18px; color: #eeeeee; margin-top: 10px;'>Translated sentence: {translation}</p>
                         <br>
                     </div>
                     """,
