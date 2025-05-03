@@ -116,7 +116,7 @@ def clear_text():
     st.session_state.review = ""
 
 # Button to clear text area
-col1, col2 = st.columns([8, 2])
+col1, col2 = st.columns([9, 1])
 with col2:
     st.button("Clear", on_click=clear_text)
 
