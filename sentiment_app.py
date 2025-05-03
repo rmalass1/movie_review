@@ -38,6 +38,11 @@ st.markdown(
         outline: none;
         border: 1px solid #ffffff80;
     }
+    div.clear-btn {
+        padding: 0.3em 0.6em;
+        width: 100%;
+        font-size: 14px;
+    }
     div.stButton > button {
         transition: none !important;
         border: 2px solid #111 !important;
@@ -118,7 +123,9 @@ def clear_text():
 # Button to clear text area
 col1, col2 = st.columns([9, 1])
 with col2:
+    st.markdown('<div class="clear-btn">', unsafe_allow_html=True)
     st.button("Clear", on_click=clear_text)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Button to predict sentiment
 if st.button ("🎬 Predict Sentiment", use_container_width=True):
