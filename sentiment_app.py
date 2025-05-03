@@ -51,9 +51,9 @@ st.markdown(
         color: white !important;
         border: 2px solid #111 !important;
     }
-    label[for="review"] {
+    div.stTextArea label {
         color: #ffffcc !important;
-        font-weight: bold;
+        font-weight: bold !important;
     </style>
     """,
     unsafe_allow_html=True
