@@ -40,17 +40,16 @@ st.markdown(
     }
     div.stButton > button {
         transition: none !important;
-        border: 2px solid #444 !important;
+        border: 2px solid #111 !important;
         background-color: #111 !important;
         color: white !important;
         font-weight: normal !important;
         box-shadow: none !important;
-        padding: 0.6em 1.2em !important;
     }
     div.stButton > button:hover {
         background-color: #111 !important;
         color: white !important;
-        border: 2px solid #444 !important;
+        border: 2px solid #111 !important;
     }
     </style>
     """,
