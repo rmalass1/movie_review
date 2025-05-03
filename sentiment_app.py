@@ -51,6 +51,9 @@ st.markdown(
         color: white !important;
         border: 2px solid #111 !important;
     }
+    label[for="review"] {
+        color: #ffffcc !important;
+        font-weight: bold;
     </style>
     """,
     unsafe_allow_html=True
@@ -112,7 +115,7 @@ def clear_text():
     st.session_state.review = ""
 
 # Button to clear text area
-col1, col2 = st.columns([9, 1])
+col1, col2 = st.columns([8, 2])
 with col2:
     st.button("Clear", on_click=clear_text)
 
