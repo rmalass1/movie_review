@@ -38,16 +38,20 @@ st.markdown(
         outline: none;
         border: 1px solid #ffffff80;
     }
-    button {
+    div.stButton > button {
         transition: none !important;
-        border: 2px transparent;
-        font-weight: normal;
+        border: 2px solid #444 !important;
+        background-color: #111 !important;
+        color: white !important;
+        font-weight: normal !important;
+        box-shadow: none !important;
+        padding: 0.6em 1.2em !important;
     }
-    button:hover {
-        border: 2px solid transparent;
-        font-weight: normal;
-        color: white;
-        }
+    div.stButton > button:hover {
+        background-color: #222 !important;
+        color: #eee !important;
+        border: 2px solid #666 !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
