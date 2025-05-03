@@ -54,6 +54,7 @@ st.markdown(
     div.stTextArea label {
         color: #ffffcc !important;
         font-weight: bold !important;
+        font-size: 18px !important;
     </style>
     """,
     unsafe_allow_html=True
