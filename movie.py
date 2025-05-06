@@ -27,14 +27,14 @@ print("\nBest Alpha: ", grid.best_params_['alpha'])
 best_model = MultinomialNB(alpha= grid.best_params_['alpha'])
 best_model.fit(X_train, y_train)
 
-#Use the model to predict sentiment labels
+#Use the model to predict sentiment labels Using the test set
 y_pred = best_model.predict(X_test)
 
 #Calculate the accuracy of the model
-accuracy = accuracy_score(y_pred, y_test)
+accuracy = accuracy_score(y_test, y_pred)
 
 #Calculate the f1-score of the model
-f1 = f1_score(y_pred, y_test)
+f1 = f1_score(y_test, y_pred)
 
 #Show the confusion matrix
 cm = confusion_matrix(y_test, y_pred)
@@ -48,6 +48,30 @@ print("\nF1-score: ", f1)
 
 #Save the best model
 joblib.dump(best_model, 'best_nb_model.pkl')
+
+#Train the final best model Using the training set
+best_model_train_set = MultinomialNB(alpha= grid.best_params_['alpha'])
+best_model_train_set.fit(X_train, y_train)
+
+#Use the model to predict sentiment labels Using the training set
+y_train_pred = best_model_train_set.predict(X_train)
+
+#Calculate the accuracy of the model
+accuracy_for_training = accuracy_score(y_train, y_train_pred)
+
+#Calculate the f1-score of the model
+f1_for_training = f1_score(y_train, y_train_pred)
+
+#Show the confusion matrix
+cm_for_training = confusion_matrix(y_train, y_train_pred)
+
+#print the confusion matrix
+print("\nConfusion Matrix:\n ", cm_for_training)
+
+#print the evaluation matrics 
+print("\nAccuracy: ", accuracy_for_training)
+print("\nF1-score: ", f1_for_training)
+
 
 
 

@@ -4,6 +4,7 @@ import json
 from google.oauth2 import service_account
 from google.cloud import translate_v2 as translate
 import time
+import os
 
 st.set_page_config(page_title="Movie Review Sentiment Analyzer", page_icon=":movie_camera:", layout="centered")
 
@@ -80,15 +81,14 @@ st.markdown(
 )
 
 # Translation credentials
-credentials_dict = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
-credentials = service_account.Credentials.from_service_account_info(credentials_dict)
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "movie-review-translator-07db7e662290.json" 
 
 # Load model and vectorizer
 model = joblib.load('best_nb_model.pkl')
 vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
 # Google translate client
-translate_client = translate.Client(credentials=credentials)
+translate_client = translate.Client()
 
 # Randy's function to translate text if needed
 def translate_if_needed(text):
