@@ -1,6 +1,7 @@
 import streamlit as st
 import joblib
-import os
+import json
+from google.oauth2 import service_account
 from google.cloud import translate_v2 as translate
 import time
 
@@ -37,6 +38,23 @@ st.markdown(
         outline: none;
         border: 1px solid #ffffff80;
     }
+    div.stButton > button {
+        transition: none !important;
+        border: 2px solid #111 !important;
+        background-color: #111 !important;
+        color: white !important;
+        font-weight: normal !important;
+        box-shadow: none !important;
+    }
+    div.stButton > button:hover {
+        background-color: #111 !important;
+        color: white !important;
+        border: 2px solid #111 !important;
+    }
+    div.stTextArea label {
+        color: #ffffcc !important;
+        font-weight: bold !important;
+        font-size: 18px !important;
     </style>
     """,
     unsafe_allow_html=True
@@ -62,14 +80,15 @@ st.markdown(
 )
 
 # Translation credentials
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "movie-review-translator-07db7e662290.json" 
+credentials_dict = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
+credentials = service_account.Credentials.from_service_account_info(credentials_dict)
 
 # Load model and vectorizer
 model = joblib.load('best_nb_model.pkl')
 vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
 # Google translate client
-translate_client = translate.Client()
+translate_client = translate.Client(credentials=credentials)
 
 # Randy's function to translate text if needed
 def translate_if_needed(text):
@@ -97,7 +116,7 @@ def clear_text():
     st.session_state.review = ""
 
 # Button to clear text area
-col1, col2 = st.columns([9, 1])
+col1, col2 = st.columns([8, 2])
 with col2:
     st.button("Clear", on_click=clear_text)
 
